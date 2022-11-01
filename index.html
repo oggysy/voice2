@@ -140,7 +140,7 @@
       // ブラウザにWeb Speech API Speech Synthesis機能があるか判定
       if ('speechSynthesis' in window) {
         var voice = speechSynthesis.getVoices().find(function (voice) {
-          return voice.name === 'Hattori';
+          return voice.name === 'O-ren';
         });
         // 発言を設定
         const uttr = new SpeechSynthesisUtterance()
