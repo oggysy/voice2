@@ -1,0 +1,141 @@
+header {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.title {
+  background-color: #8CC919;
+  color: white;
+  text-align: center;
+  height: 75px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.title h1 {
+  padding-top: 15px;
+  margin-top: 0;
+}
+
+.person {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.select {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.select p {
+  margin-top: 0;
+  font-weight: bold;
+  color: #555555;
+}
+
+.person input[type=radio]+label:before {
+  content: "";
+  display: inline-block;
+  background-size: contain;
+  width: 100px;
+  height: 100px;
+}
+
+.person input[type=radio][value="woman"]+label:before {
+  background-image: url(image/kyoko.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.person input[type=radio][value="man"]+label:before {
+  background-image: url(image/takashi.png);
+  background-repeat: no-repeat;
+}
+
+.person input[type=radio][value="john"]+label:before {
+  background-image: url(image/john.png);
+  background-repeat: no-repeat;
+}
+
+.person input[type=radio]:checked+label::before {
+  border: 3px solid #FDA64A;
+  border-radius: 10%;
+  box-sizing: border-box;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+
+.situation {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.situation input[type=radio]+label:before {
+  content: "";
+  display: inline-block;
+  background-size: contain;
+  width: 70px;
+  height: 70px;
+}
+
+.situation input[type=radio][value="male"]+label:before {
+  background-image: url(image/食事.png);
+  background-repeat: no-repeat;
+}
+
+.situation input[type=radio][value="toothpaste"]+label:before {
+  background-image: url(image/歯ブラシ.png);
+  background-repeat: no-repeat;
+}
+
+.situation input[type=radio][value="tired"]+label:before {
+  background-image: url(image/face.png);
+  background-repeat: no-repeat;
+}
+
+.situation input[type=radio][value="cold"]+label:before {
+  background-image: url(image/マスク.png);
+  background-repeat: no-repeat;
+}
+
+.situation input[type=radio]:checked+label::before {
+  border: 3px solid #F8759D;
+  border-radius: 10%;
+  box-sizing: border-box;
+}
+
+
+.speakButton {
+  text-align: center;
+}
+
+a {
+  width: 80%;
+  display: inline-block;
+  background: #607AE3;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border-bottom: 8px solid #284de2;
+  position: relative;
+  bottom: 0;
+  font-size: 20px;
+}
+
+a:active {
+  border: 0;
+  bottom: -2px;
+}
+
+.speakButton {
+  margin-top: 20px;
+}

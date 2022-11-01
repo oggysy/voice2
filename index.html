@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="image/face.png">
+  <link rel="apple-touch-icon" href="image/face.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Klee+One&family=M+PLUS+Rounded+1c:wght@500&display=swap"
+    rel="stylesheet">
+  <title>今、話せません</title>
+</head>
+
+<body>
+  <div class="title">
+    <h1>今、話せません</h1>
+  </div>
+
+  <div class="person">
+    <div class="select">
+      <input type="radio" name="type" value="woman" id="woman" checked><label for="woman"></label>
+      <p>[女性]<br>丁寧</p>
+    </div>
+    <div class="select">
+      <input type="radio" name="type" value="man" id="man"><label for="man"></label>
+      <p>[男性]<br>反抗期</p>
+    </div>
+    <div class="select">
+      <input type="radio" name="type" value="john" id="john"><label for="john"></label>
+      <p>[外国人]<br>日本語苦手</p>
+    </div>
+  </div>
+
+  <div class="situation">
+    <div class="select">
+      <input type="radio" name="situation" value="male" id="male" checked><label for="male"></label>
+      <p>食事</p>
+    </div>
+    <div class="select">
+      <input type="radio" name="situation" value="toothpaste" id="toothpaste"><label for="toothpaste"></label>
+      <p>歯磨き</p>
+    </div>
+    <div class="select">
+      <input type="radio" name="situation" value="tired" id="tired"><label for="tired"></label>
+      <p>疲れてる</p>
+    </div>
+    <div class="select">
+      <input type="radio" name="situation" value="cold" id="cold"><label for="cold"></label>
+      <p>風邪</p>
+    </div>
+  </div>
+
+  <div class="speakButton">
+    <a href="javascript:speak();">話す</a>
+  </div>
+
+
+  <script>
+    function speak() {
+      let selectPerson = document.getElementsByName("type");
+      //console.log(selectPerson[0].checked)
+      if (selectPerson[0].checked) {
+        readAloudWoman()
+      } else if (selectPerson[1].checked) {
+        readAloudMan()
+      } else if (selectPerson[2].checked) {
+        readAloudForeigner()
+      }
+    }
+
+
+    function womanWord() {
+      let selectSituation = document.getElementsByName("situation")
+      if (selectSituation[0].checked) {
+        return "食事をしているので話せません"
+      } else if (selectSituation[1].checked) {
+        return "歯磨き中なので喋れません"
+      } else if (selectSituation[2].checked) {
+        return "とても疲れているので休ませてください"
+      } else {
+        return "風邪をひいています。喉が痛くて話せません"
+      }
+    }
+
+
+    function manWord() {
+      let selectSituation = document.getElementsByName("situation")
+      if (selectSituation[0].checked) {
+        return "飯食ってる"
+      } else if (selectSituation[1].checked) {
+        return "歯磨き中"
+      } else if (selectSituation[2].checked) {
+        return "疲れてる"
+      } else {
+        return "風邪ひいてる"
+      }
+    }
+
+
+    function foreignerWord() {
+      let selectSituation = document.getElementsByName("situation")
+      if (selectSituation[0].checked) {
+        return "shock zi tyuudesu"
+      } else if (selectSituation[1].checked) {
+        return "hamigaki o sitteimasu"
+      } else if (selectSituation[2].checked) {
+        return "tukareteimasu"
+      } else {
+        return "kazeo hiite shimaimashita"
+      }
+    }
+
+
+
+    function readAloudWoman() {
+      // テキストを取得
+      const text = womanWord()
+      // ブラウザにWeb Speech API Speech Synthesis機能があるか判定
+      if ('speechSynthesis' in window) {
+        // 発言を設定
+        const uttr = new SpeechSynthesisUtterance()
+        uttr.text = text
+        // 発言を再生
+        window.speechSynthesis.speak(uttr)
+
+      } else {
+        alert('大変申し訳ありません。このブラウザは音声合成に対応していません。')
+      }
+    }
+
+    function readAloudMan() {
+      // テキストを取得
+      const text = manWord()
+      // ブラウザにWeb Speech API Speech Synthesis機能があるか判定
+      if ('speechSynthesis' in window) {
+        // 発言を設定
+        const uttr = new SpeechSynthesisUtterance()
+        uttr.text = text
+        uttr.pitch = 0
+
+        // 発言を再生
+        window.speechSynthesis.speak(uttr)
+
+      } else {
+        alert('大変申し訳ありません。このブラウザは音声合成に対応していません。')
+      }
+    }
+
+    function readAloudForeigner() {
+      // テキストを取得
+
+      const text = foreignerWord()
+      // ブラウザにWeb Speech API Speech Synthesis機能があるか判定
+      if ('speechSynthesis' in window) {
+        // 発言を設定
+        var voice = speechSynthesis.getVoices().find(function (voice) {
+          return voice.name === 'Jorge';
+        });
+        const uttr = new SpeechSynthesisUtterance()
+
+        // 取得できた場合のみ適用する
+        if (voice) {
+          uttr.voice = voice;
+        }
+        uttr.text = text
+
+        // 発言を再生
+        window.speechSynthesis.speak(uttr)
+
+      } else {
+        alert('大変申し訳ありません。このブラウザは音声合成に対応していません。')
+      }
+    }
+
+
+
+
+  </script>
+
+</body>
+
+</html>
