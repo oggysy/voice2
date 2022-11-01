@@ -139,14 +139,9 @@
       const text = manWord()
       // ブラウザにWeb Speech API Speech Synthesis機能があるか判定
       if ('speechSynthesis' in window) {
-        var voice = speechSynthesis.getVoices().find(function (voice) {
-          return voice.name === 'O-ren';
-        });
         // 発言を設定
         const uttr = new SpeechSynthesisUtterance()
-        if (voice) {
-          uttr.voice = voice;
-        }
+        uttr.pitch = 0
         uttr.text = text
 
         // 発言を再生
